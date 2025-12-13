@@ -1,0 +1,63 @@
+{
+  "arxiv": {
+    "categories": [
+      "cs.AI", 
+      "cs.LG", 
+      "cs.Distributed",
+      "cs.DC",
+      "cs.CL",
+      "cs.AR",
+      "cs.CV"
+    ],
+    "max_results": 50,
+    "sort_by": "submittedDate",
+    "sort_order": "descending"
+  },
+  "filter": {
+    "provider": "deepseek",
+    "api_key": $LLM_API_KEY,
+    "model": "deepseek-chat",
+    "base_url": "https://api.deepseek.com",
+    "relevance_threshold": 0.7,
+    "title_filter_threshold": 0.5,
+    "coarse_filter_threshold": 0.01,
+    "enable_coarse_filter": true,
+    "keywords": [
+      "Latency", "Throughput", "Speedup", "Efficiency", "Scalability", "Overhead", "Roofline", "high performance",
+      "HBM", "KV Cache", "Activation Checkpointing", "Offloading", "PagedAttention", "Memory",
+      "Quantization", "FP8", "INT8", "W4A16", "Mixed Precision", "PTQ",
+      "Sparsity", "Pruning", "Token Merging", "Long Context", "Attention", "Sliding Window",
+      "Parallel", "Sharding", "FSDP", "3D Parallelism", "Mixture-of-Experts",
+      "Transformer","Large Language Model","Multimodal","CV","LLM","VLM","Diffusion","DiT", 
+      "Diffusion Transformer", "MoE", "SSM", "State Space",
+      "Triton", "CUDA","TVM", "MLIR", "XLA", "TorchCompile", "Graph Compiler", "Kernel Fusion",
+      "vLLM", "sglang", "TensorRT", "ONNX", "DeepSpeed", "Megatron", "FlashAttention",
+      "NPU","GPU","HPC","MPI","OpenMP",
+      "distributed","supercomputing","cluster","pytorch","torch"
+    ]
+  },
+  "email": {
+    "enabled": true,
+    "smtp_server": "smtp.163.com",
+    "smtp_port": 25,
+    "sender_email": $SENDER_EMAIL,
+    "sender_password": $SENDER_PASSWORD,
+    "receiver_email": "zhuwenjiao406@163.com"
+  },
+  "wechat": {
+    "enabled": false,
+    "type": "wecom",  
+    "serverchan_key": $SERVERCHAN_KEY,
+    "wecom_webhook": $WECOM_WEBHOOK
+  },
+  "schedule": {
+    "enabled": false,
+    "time": "09:00",
+    "timezone": "Asia/Shanghai"
+  },
+  "storage": {
+    "database_path": "papers.db",
+    "log_path": "logs",
+    "max_storage_size": 1000
+  }
+}
