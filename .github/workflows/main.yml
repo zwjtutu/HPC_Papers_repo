@@ -1,0 +1,73 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Daily ArXiv Paper Agent
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  # GitHub Actions 使用 UTC 时间。UTC 01:00 等于 北京时间 09:00
+  schedule:
+    - cron: '0 1 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 第一步：拉取代码
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # 第二步：设置 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14.2'
+          cache: 'pip' # 开启缓存，加速依赖安装
+
+      # 第三步：安装依赖
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          
+      # 第四步：运行 Agent 主逻辑
+      # 这里的环境变量需要去 GitHub 仓库的 Settings -> Secrets 中配置
+      - name: Run Agent Logic
+        env:
+          # LLM API 密钥 (例如 DeepSeek 或 OpenAI)
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }} # 可选，如果用中转或者第三方模型
+
+          #邮箱推送相关秘钥
+          EMAIL_PATH: ${{ secrets.SENDER_EMAIL}}
+          EMAIL_PASS: ${{ secrets.SENDER_PASSWORD}}
+          
+          # 微信推送相关密钥 (以 WxPusher 为例，或者企业微信密钥)
+          PUSH_SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
+          PUSH_WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+        run: python main.py --days 1 --config config.json
+
+      # 第五步：持久化“记忆” (关键步骤)
+      # 如果 main.py 更新了一个 JSON 文件(如 history.json)来记录已推论文ID
+      # 我们需要将这个变动提交回仓库，否则明天还会重复推同一篇
+      - name: Commit and push history
+        run: |
+          git config --global user.name 'zwjtutu'
+          git config --global user.email 'zhuwenjiao406@163.com'
+          git add logs/*
+          git add papers.db
+          # 如果没有文件变化（比如今天没发新论文），commit 会报错，所以加 || echo 防止报错中断
+          git commit -m "Auto-update: processed paper history" || echo "No changes to commit"
+          git push
+          
