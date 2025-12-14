@@ -1,6 +1,8 @@
 """
 邮件发送模块
 """
+import os
+import resend
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -45,9 +47,8 @@ def _get_alphaxiv_link(paper: Dict) -> str:
 class EmailSender:
     """邮件发送器"""
     
-    def __init__(self, smtp_server: str, smtp_port: int, 
-                 sender_email: str, sender_password: str,
-                 receiver_email: str):
+    def __init__(self, send_mode: str, smtp_server: str, smtp_port: int, 
+                 sender_email: str, sender_password: str, receiver_email: str):
         """
         初始化邮件发送器
         
@@ -58,6 +59,7 @@ class EmailSender:
             sender_password: 发送者邮箱密码或应用专用密码
             receiver_email: 接收者邮箱
         """
+        self.send_mode = send_mode
         self.smtp_server = smtp_server
         self.smtp_port = smtp_port
         self.sender_email = sender_email
@@ -97,19 +99,68 @@ class EmailSender:
             msg.attach(MIMEText(text_content, 'plain', 'utf-8'))
             msg.attach(MIMEText(html_content, 'html', 'utf-8'))
             
-            # 发送邮件
-            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
-                server.starttls()
-                server.login(self.sender_email, self.sender_password)
-                server.send_message(msg)
-            
+            # # 发送邮件
+            if self.send_mode == "smtp":
+                with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                    server.starttls()
+                    server.login(self.sender_email, self.sender_password)
+                    server.send_message(msg)
+            else:
+                resend.api_key = os.environ['RESEND_API_KEY']
+                res = resend.Emails.send( self.mime_to_api_payload(msg) )
+
             logger.info(f"成功发送 {len(papers)} 篇论文到邮箱")
             return True
             
         except Exception as e:
             logger.error(f"发送邮件时出错: {e}", exc_info=True)
             return False
-    
+
+    def mime_to_api_payload(self, msg: MIMEMultipart):
+        """
+        将 MIMEMultipart 对象转换为 Resend API 可用的 Payload 字典
+        """
+        payload = {
+            "subject": msg.get("Subject", "No Subject"),
+            # 注意：API通常要求 to 是列表或清洗过的字符串
+            # 这里假设 msg['To'] 是标准的邮箱字符串
+            "to": msg.get("To"), 
+            "from": "onboarding@resend.dev", # 暂时写死或从 msg['From'] 提取并清洗
+            "html": "",
+            "text": ""
+        }
+
+        # 遍历 MIME 的各个部分
+        # 如果 msg 本身不是 multipart (例如只是纯文本)，walk() 依然有效
+        for part in msg.walk():
+            # 跳过 multipart 容器本身，只看具体内容
+            if part.get_content_maintype() == 'multipart':
+                continue
+
+            # 获取内容类型
+            content_type = part.get_content_type()
+            # 获取字符集，默认为 utf-8
+            charset = part.get_content_charset() or 'utf-8'
+
+            # 提取 payload 并解码
+            try:
+                content = part.get_payload(decode=True).decode(charset)
+            except Exception:
+                # 如果解码失败，跳过或记录错误
+                continue
+
+            if content_type == 'text/html':
+                payload['html'] = content
+            elif content_type == 'text/plain':
+                payload['text'] = content
+
+        # 如果只有 HTML 没有纯文本，通常 API 会自动处理，反之亦然
+        # 但为了稳健，如果 html 为空但 text 有值，可以用 text 填充 html
+        if not payload['html'] and payload['text']:
+            payload['html'] = f"<pre>{payload['text']}</pre>"
+
+        return payload
+
     def _format_reason(self, reason: str) -> str:
         """
         格式化原因文本，将PICO/T格式的各个部分换行显示

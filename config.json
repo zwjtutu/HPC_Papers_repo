@@ -38,6 +38,7 @@
   },
   "email": {
     "enabled": true,
+    "send_mode": "resend",
     "smtp_server": "smtp.163.com",
     "smtp_port": 25,
     "sender_email": "",

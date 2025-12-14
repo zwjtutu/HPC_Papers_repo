@@ -109,6 +109,7 @@ class HPCPaperAgent:
         self.email_sender = None
         if email_config.get("enabled", False):
             self.email_sender = EmailSender(
+                send_mode=email_config.get("send_mode", "smtp"),
                 smtp_server=email_config.get("smtp_server", ""),
                 smtp_port=email_config.get("smtp_port", 587),
                 sender_email=email_config.get("sender_email", ""),
