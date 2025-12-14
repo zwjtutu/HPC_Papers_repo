@@ -56,3 +56,166 @@
 2025-12-14 11:26:16,211 - __main__ - INFO - ================================================================================
 2025-12-14 11:26:16,211 - __main__ - INFO - 完成！共处理 1 篇相关论文
 2025-12-14 11:26:16,211 - __main__ - INFO - ================================================================================
+2025-12-14 11:31:28,224 - __main__ - INFO - 已初始化 deepseek 筛选器
+2025-12-14 11:31:28,224 - __main__ - INFO - 存储上限已设置: 1000 篇论文
+2025-12-14 11:31:28,225 - __main__ - INFO - ================================================================================
+2025-12-14 11:31:28,225 - __main__ - INFO - 开始运行HPC论文自动获取工具
+2025-12-14 11:31:28,225 - __main__ - INFO - ================================================================================
+2025-12-14 11:31:28,225 - __main__ - INFO - 步骤1: 从arXiv获取最近 3 天的论文...
+2025-12-14 11:31:28,225 - arxiv_fetcher - INFO - 正在从arXiv获取论文: http://export.arxiv.org/api/query?search_query=cat%3Acs.AI+OR+cat%3Acs.LG+OR+cat%3Acs.Distributed+OR+cat%3Acs.DC+OR+cat%3Acs.CL+OR+cat%3Acs.AR+OR+cat%3Acs.CV&start=0&max_results=30&sortBy=submittedDate&sortOrder=descending
+2025-12-14 11:31:28,681 - arxiv_fetcher - INFO - 成功获取 30 篇论文
+2025-12-14 11:31:28,681 - __main__ - INFO - 获取到 30 篇论文
+2025-12-14 11:31:28,681 - __main__ - INFO - 步骤3: 使用deepseek筛选相关论文...
+2025-12-14 11:31:28,682 - base_filter - INFO - 阶段1: 粗筛（关键词匹配，阈值: 0.01）...
+2025-12-14 11:31:28,684 - base_filter - INFO - 阶段1完成: 24/30 篇论文通过粗筛
+2025-12-14 11:31:28,684 - base_filter - INFO - 阶段2: 标题LLM筛选（阈值: 0.50）...
+2025-12-14 11:31:29,562 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:31:35,038 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:31:38,093 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:31:41,714 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:31:45,997 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:31:51,569 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:31:55,980 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:00,294 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:04,986 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:09,633 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:15,027 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:22,115 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:26,114 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:31,644 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:35,052 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:40,905 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:44,900 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:47,915 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:52,621 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:32:57,457 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:33:01,203 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:33:06,704 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:33:11,128 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:33:16,168 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:33:21,503 - base_filter - INFO - 阶段2完成: 2/24 篇论文通过标题筛选
+2025-12-14 11:33:21,503 - base_filter - INFO - 阶段3: 标题+摘要LLM筛选（阈值: 0.70）...
+2025-12-14 11:33:21,847 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:33:31,389 - base_filter - INFO - 论文 'Towards Efficient and Effective Multi-Camera Encod...' 最终相关 (分数: 0.70)
+2025-12-14 11:33:31,731 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 11:33:41,252 - base_filter - INFO - 筛选完成: 1/30 篇论文最终相关
+2025-12-14 11:33:41,252 - base_filter - INFO - Token节省统计:
+2025-12-14 11:33:41,252 - base_filter - INFO -   - 阶段1过滤: 6 篇论文（关键词匹配，无需LLM）
+2025-12-14 11:33:41,252 - base_filter - INFO -   - 阶段2过滤: 22 篇论文（仅标题LLM，节省摘要token）
+2025-12-14 11:33:41,252 - base_filter - INFO -   - 总LLM调用: 26 次（阶段2: 24次，阶段3: 2次）
+2025-12-14 11:33:41,252 - base_filter - INFO -   - 相比单阶段筛选，节省约 13.3% 的完整LLM调用
+2025-12-14 11:33:41,252 - __main__ - INFO - 筛选出 1 篇相关论文
+2025-12-14 11:33:41,252 - __main__ - INFO - 步骤4: 保存论文到数据库...
+2025-12-14 11:33:41,254 - __main__ - INFO - 步骤5: 发送通知...
+2025-12-14 11:33:41,254 - __main__ - INFO - 发送邮件通知...
+2025-12-14 11:33:41,777 - email_sender - INFO - 成功发送 1 篇论文到邮箱
+2025-12-14 11:33:41,777 - __main__ - INFO - 邮件发送成功
+2025-12-14 11:33:41,777 - __main__ - INFO - ================================================================================
+2025-12-14 11:33:41,777 - __main__ - INFO - 完成！共处理 1 篇相关论文
+2025-12-14 11:33:41,777 - __main__ - INFO - ================================================================================
+2025-12-14 15:59:37,125 - __main__ - INFO - 已初始化 deepseek 筛选器
+2025-12-14 15:59:37,126 - __main__ - INFO - 存储上限已设置: 1000 篇论文
+2025-12-14 15:59:37,126 - __main__ - INFO - ================================================================================
+2025-12-14 15:59:37,126 - __main__ - INFO - 开始运行HPC论文自动获取工具
+2025-12-14 15:59:37,126 - __main__ - INFO - ================================================================================
+2025-12-14 15:59:37,126 - __main__ - INFO - 步骤1: 从arXiv获取最近 3 天的论文...
+2025-12-14 15:59:37,127 - arxiv_fetcher - INFO - 正在从arXiv获取论文: http://export.arxiv.org/api/query?search_query=cat%3Acs.AI+OR+cat%3Acs.LG+OR+cat%3Acs.Distributed+OR+cat%3Acs.DC+OR+cat%3Acs.CL+OR+cat%3Acs.AR+OR+cat%3Acs.CV&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending
+2025-12-14 15:59:37,887 - arxiv_fetcher - INFO - 成功获取 76 篇论文
+2025-12-14 15:59:37,889 - __main__ - INFO - 获取到 76 篇论文
+2025-12-14 15:59:37,889 - __main__ - INFO - 步骤3: 使用deepseek筛选相关论文...
+2025-12-14 15:59:37,889 - base_filter - INFO - 阶段1: 粗筛（关键词匹配，阈值: 0.01）...
+2025-12-14 15:59:37,895 - base_filter - INFO - 阶段1完成: 62/76 篇论文通过粗筛
+2025-12-14 15:59:37,895 - base_filter - INFO - 阶段2: 标题LLM筛选（阈值: 0.50）...
+2025-12-14 15:59:38,715 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 15:59:41,829 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 15:59:44,984 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 15:59:49,132 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 15:59:53,916 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:00,100 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:04,603 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:08,781 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:13,453 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:17,541 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:20,934 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:25,790 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:29,685 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:35,341 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:39,782 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:44,753 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:49,402 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:53,479 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:00:58,446 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:02,846 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:07,385 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:13,361 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:19,738 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:24,055 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:30,105 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:33,878 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:36,901 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:40,775 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:45,311 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:50,813 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:55,312 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:01:58,042 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:01,996 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:05,140 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:10,146 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:14,178 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:18,017 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:22,513 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:27,159 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:31,182 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:37,105 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:42,271 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:45,439 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:48,679 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:53,653 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:02:57,898 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:03,838 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:08,750 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:13,014 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:16,373 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:19,984 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:24,022 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:30,869 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:35,255 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:40,271 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:42,800 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:46,607 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:51,369 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:03:55,411 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:04:00,979 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:04:06,288 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:04:10,008 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:04:12,620 - base_filter - INFO - 阶段2完成: 7/62 篇论文通过标题筛选
+2025-12-14 16:04:12,620 - base_filter - INFO - 阶段3: 标题+摘要LLM筛选（阈值: 0.70）...
+2025-12-14 16:04:12,950 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:04:22,057 - base_filter - INFO - 论文 'Towards Efficient and Effective Multi-Camera Encod...' 最终相关 (分数: 0.70)
+2025-12-14 16:04:22,383 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:04:33,033 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:04:42,121 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:04:51,471 - base_filter - INFO - 论文 'SparseSwaps: Tractable LLM Pruning Mask Refinement...' 最终相关 (分数: 0.80)
+2025-12-14 16:04:51,818 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:05:02,939 - base_filter - INFO - 论文 'Multi-Granular Node Pruning for Circuit Discovery...' 最终相关 (分数: 0.70)
+2025-12-14 16:05:03,545 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:05:13,890 - base_filter - INFO - 论文 'Scaling Behavior of Discrete Diffusion Language Mo...' 最终相关 (分数: 0.70)
+2025-12-14 16:05:14,223 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2025-12-14 16:05:24,871 - base_filter - INFO - 筛选完成: 4/76 篇论文最终相关
+2025-12-14 16:05:24,871 - base_filter - INFO - Token节省统计:
+2025-12-14 16:05:24,871 - base_filter - INFO -   - 阶段1过滤: 14 篇论文（关键词匹配，无需LLM）
+2025-12-14 16:05:24,871 - base_filter - INFO -   - 阶段2过滤: 55 篇论文（仅标题LLM，节省摘要token）
+2025-12-14 16:05:24,871 - base_filter - INFO -   - 总LLM调用: 69 次（阶段2: 62次，阶段3: 7次）
+2025-12-14 16:05:24,871 - base_filter - INFO -   - 相比单阶段筛选，节省约 9.2% 的完整LLM调用
+2025-12-14 16:05:24,871 - __main__ - INFO - 筛选出 4 篇相关论文
+2025-12-14 16:05:24,871 - __main__ - INFO - 步骤4: 保存论文到数据库...
+2025-12-14 16:05:24,878 - __main__ - INFO - 步骤5: 发送通知...
+2025-12-14 16:05:24,878 - __main__ - INFO - 发送邮件通知...
+2025-12-14 16:05:25,082 - email_sender - INFO - 成功发送 4 篇论文到邮箱
+2025-12-14 16:05:25,082 - __main__ - INFO - 邮件发送成功
+2025-12-14 16:05:25,082 - __main__ - INFO - 发送微信通知...
+2025-12-14 16:05:25,082 - wechat_sender - ERROR - 未配置ServerChan Key
+2025-12-14 16:05:25,082 - __main__ - ERROR - 微信发送失败
+2025-12-14 16:05:25,083 - __main__ - INFO - ================================================================================
+2025-12-14 16:05:25,083 - __main__ - INFO - 完成！共处理 4 篇相关论文
+2025-12-14 16:05:25,083 - __main__ - INFO - ================================================================================
