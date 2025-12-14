@@ -9,9 +9,9 @@ on:
     branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
-  # GitHub Actions 使用 UTC 时间。UTC 01:00 等于 北京时间 09:00
+  # GitHub Actions 使用 UTC 时间。UTC 22:00 等于 北京时间 06:00
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 22 * * *'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
