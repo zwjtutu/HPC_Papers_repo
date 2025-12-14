@@ -2,6 +2,7 @@
 筛选器工厂类
 根据配置创建对应的筛选器实例
 """
+import os
 import logging
 from typing import Optional
 from base_filter import BaseFilter
@@ -32,8 +33,12 @@ class FilterFactory:
         Returns:
             筛选器实例，如果配置无效则返回None
         """
+        ###Add for secret env
+        llmapikey_env = os.getenv('LLM_API_KEY')
+
         provider = filter_config.get("provider", "").lower()
         api_key = filter_config.get("api_key", "")
+        api_key = llmapikey_env if llmapikey_env else api_key
         model = filter_config.get("model", "")
         base_url = filter_config.get("base_url", "")
         relevance_threshold = filter_config.get("relevance_threshold", 0.7)

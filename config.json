@@ -15,7 +15,7 @@
   },
   "filter": {
     "provider": "deepseek",
-    "api_key": $LLM_API_KEY,
+    "api_key": "",
     "model": "deepseek-chat",
     "base_url": "https://api.deepseek.com",
     "relevance_threshold": 0.7,
@@ -40,15 +40,15 @@
     "enabled": true,
     "smtp_server": "smtp.163.com",
     "smtp_port": 25,
-    "sender_email": $SENDER_EMAIL,
-    "sender_password": $SENDER_PASSWORD,
+    "sender_email": "",
+    "sender_password": "",
     "receiver_email": "zhuwenjiao406@163.com"
   },
   "wechat": {
     "enabled": false,
     "type": "wecom",  
-    "serverchan_key": $SERVERCHAN_KEY,
-    "wecom_webhook": $WECOM_WEBHOOK
+    "serverchan_key": "",
+    "wecom_webhook": ""
   },
   "schedule": {
     "enabled": false,

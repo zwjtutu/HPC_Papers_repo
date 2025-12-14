@@ -1,6 +1,7 @@
 """
 HPC论文自动获取工具主程序
 """
+import os
 import logging
 from logging.handlers import RotatingFileHandler
 import sys
@@ -63,6 +64,12 @@ class HPCPaperAgent:
         self._init_components()
     
     def _init_components(self):
+        ###Add for secret env
+        email_sender_env = os.getenv('SENDER_EMAIL')
+        sender_password_env = os.getenv('SENDER_PASSWORD')
+        serverchan_key_env = os.getenv('SERVERCHAN_KEY')
+        wecom_webhook_env = os.getenv('WECOM_WEBHOOK')
+
         """初始化各个组件"""
         # arXiv获取器
         arxiv_config = self.config.get("arxiv", {})
@@ -91,6 +98,8 @@ class HPCPaperAgent:
         
         # 邮件发送器
         email_config = self.config.get("email", {})
+        email_config.sender_email = email_sender_env;
+        email_config.sender_password = sender_password_env;
         self.email_sender = None
         if email_config.get("enabled", False):
             self.email_sender = EmailSender(
@@ -103,6 +112,8 @@ class HPCPaperAgent:
         
         # 微信发送器
         wechat_config = self.config.get("wechat", {})
+        wechat_config.serverchan_key = serverchan_key_env
+        wechat_config.wecom_webhook = wecom_webhook_env
         self.wechat_sender = None
         if wechat_config.get("enabled", False):
             self.wechat_sender = WeChatSender(
