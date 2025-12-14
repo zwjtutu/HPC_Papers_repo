@@ -99,10 +99,13 @@ class HPCPaperAgent:
         # 邮件发送器
         email_config = self.config.get("email", {})
         if email_sender_env:
+            print("test, into set email_sender_env")
             email_config = email_config.set("sender_email", email_sender_env)
         if sender_password_env:
             email_config = email_config.set("sender_password", sender_password_env)
-            
+
+        print("test, email_sender_env:{} sender_email: {}".format(email_sender_env, email_config.get("sender_email", "")))
+
         self.email_sender = None
         if email_config.get("enabled", False):
             self.email_sender = EmailSender(
