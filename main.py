@@ -98,8 +98,11 @@ class HPCPaperAgent:
         
         # 邮件发送器
         email_config = self.config.get("email", {})
-        email_config.sender_email = email_sender_env;
-        email_config.sender_password = sender_password_env;
+        if email_sender_env:
+            email_config = email_config.set("sender_email", email_sender_env)
+        if sender_password_env:
+            email_config = email_config.set("sender_password", sender_password_env)
+            
         self.email_sender = None
         if email_config.get("enabled", False):
             self.email_sender = EmailSender(
@@ -112,8 +115,11 @@ class HPCPaperAgent:
         
         # 微信发送器
         wechat_config = self.config.get("wechat", {})
-        wechat_config.serverchan_key = serverchan_key_env
-        wechat_config.wecom_webhook = wecom_webhook_env
+        if serverchan_key_env:
+            wechat_config = wechat_config.set("serverchan_key", serverchan_key_env)
+        if wecom_webhook_env:
+            wechat_config = wechat_config.set("wecom_webhook", wecom_webhook_env)
+
         self.wechat_sender = None
         if wechat_config.get("enabled", False):
             self.wechat_sender = WeChatSender(
