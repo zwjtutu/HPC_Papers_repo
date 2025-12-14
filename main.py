@@ -65,10 +65,10 @@ class HPCPaperAgent:
     
     def _init_components(self):
         ###Add for secret env
-        email_sender_env = os.getenv('SENDER_EMAIL')
-        sender_password_env = os.getenv('SENDER_PASSWORD')
-        serverchan_key_env = os.getenv('SERVERCHAN_KEY')
-        wecom_webhook_env = os.getenv('WECOM_WEBHOOK')
+        email_sender_env = os.environ.get("SENDER_EMAIL")
+        sender_password_env = os.environ.get("SENDER_PASSWORD")
+        serverchan_key_env = os.environ.get("SERVERCHAN_KEY")
+        wecom_webhook_env = os.environ.get("WECOM_WEBHOOK")
 
         """初始化各个组件"""
         # arXiv获取器

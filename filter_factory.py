@@ -34,7 +34,7 @@ class FilterFactory:
             筛选器实例，如果配置无效则返回None
         """
         ###Add for secret env
-        llmapikey_env = os.getenv('LLM_API_KEY')
+        llmapikey_env = os.environ.get("LLM_API_KEY")
 
         provider = filter_config.get("provider", "").lower()
         api_key = filter_config.get("api_key", "")
