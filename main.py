@@ -66,7 +66,7 @@ class HPCPaperAgent:
     def _init_components(self):
         ###Add for secret env
         email_sender_env = os.environ.get("EMAIL_PATH")
-        sender_password_env = os.environ.get("EMAIL_PASS")
+        email_password_env = os.environ.get("EMAIL_PASS")
         serverchan_key_env = os.environ.get("PUSH_SERVERCHAN_KEY")
         wecom_webhook_env = os.environ.get("PUSH_WECOM_WEBHOOK")
 
@@ -98,35 +98,25 @@ class HPCPaperAgent:
         
         # 邮件发送器
         email_config = self.config.get("email", {})
-        if email_sender_env:
-            email_config = email_config.set("sender_email", email_sender_env)
-        if sender_password_env:
-            email_config = email_config.set("sender_password", sender_password_env)
-
         self.email_sender = None
         if email_config.get("enabled", False):
             self.email_sender = EmailSender(
                 send_mode=email_config.get("send_mode", "smtp"),
                 smtp_server=email_config.get("smtp_server", ""),
                 smtp_port=email_config.get("smtp_port", 587),
-                sender_email=email_config.get("sender_email", ""),
-                sender_password=email_config.get("sender_password", ""),
+                sender_email=email_sender_env if email_sender_env else email_config.get("sender_email", ""),
+                sender_password=email_password_env if email_password_env else email_config.get("sender_password", ""),
                 receiver_email=email_config.get("receiver_email", "")
             )
         
         # 微信发送器
         wechat_config = self.config.get("wechat", {})
-        if serverchan_key_env:
-            wechat_config = wechat_config.set("serverchan_key", serverchan_key_env)
-        if wecom_webhook_env:
-            wechat_config = wechat_config.set("wecom_webhook", wecom_webhook_env)
-
         self.wechat_sender = None
         if wechat_config.get("enabled", False):
             self.wechat_sender = WeChatSender(
                 sender_type=wechat_config.get("type", "serverchan"),
-                serverchan_key=wechat_config.get("serverchan_key", ""),
-                wecom_webhook=wechat_config.get("wecom_webhook", "")
+                serverchan_key=serverchan_key_env if serverchan_key_env else wechat_config.get("serverchan_key", ""),
+                wecom_webhook=wecom_webhook_env if wecom_webhook_env else wechat_config.get("wecom_webhook", "")
             )
     
     def run(self, days: int = 1):
