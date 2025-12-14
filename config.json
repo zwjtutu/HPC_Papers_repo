@@ -9,7 +9,7 @@
       "cs.AR",
       "cs.CV"
     ],
-    "max_results": 30,
+    "max_results": 100,
     "sort_by": "submittedDate",
     "sort_order": "descending"
   },
@@ -46,8 +46,8 @@
     "receiver_email": "zhuwenjiao406@163.com"
   },
   "wechat": {
-    "enabled": false,
-    "type": "wecom",  
+    "enabled": true,
+    "type": "serverchan",  
     "serverchan_key": "",
     "wecom_webhook": ""
   },
