@@ -56,7 +56,7 @@ jobs:
           # 微信推送相关密钥 (以 WxPusher 为例，或者企业微信密钥)
           PUSH_SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
           PUSH_WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
-        run: python main.py --days 2 --config config.json
+        run: python main.py --days 3 --config config.json
 
       # 第五步：持久化“记忆” (关键步骤)
       # 如果 main.py 更新了一个 JSON 文件(如 history.json)来记录已推论文ID
