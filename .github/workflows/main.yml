@@ -50,6 +50,7 @@ jobs:
           LLM_BASE_URL: https://api.deepseek.com # 可选，如果用中转或者第三方模型
 
           #邮箱推送相关秘钥
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY}}
           EMAIL_PATH: ${{ secrets.SENDER_EMAIL}}
           EMAIL_PASS: ${{ secrets.SENDER_PASSWORD}}
           
