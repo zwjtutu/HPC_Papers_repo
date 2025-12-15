@@ -177,12 +177,12 @@ class EmailSender:
         # 使用正则表达式匹配P、I、C、O、T各部分
         # 匹配模式：P(Problem/Population): 或 P(Problem): 等格式，支持跨行内容
         patterns = [
-            (r'P\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'P(Problem/Population)'),
-            (r'I\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'I(Intervention/Interest)'),
+            (r'P\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'P(Problem)'),
+            (r'I\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'I(Intervention)'),
             (r'C\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'C(Comparison)'),
             (r'O\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'O(Outcome)'),
             (r'0\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'O(Outcome)'),  # 处理数字0的情况
-            (r'T\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'T(Theory/Thesis)'),
+            (r'T\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'T(Theory)'),
         ]
         
         # 按顺序提取各个部分
@@ -243,12 +243,12 @@ class EmailSender:
         
         # 使用正则表达式匹配P、I、C、O、T各部分
         patterns = [
-            (r'P\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'P(Problem/Population)'),
-            (r'I\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'I(Intervention/Interest)'),
+            (r'P\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'P(Problem)'),
+            (r'I\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'I(Intervention)'),
             (r'C\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'C(Comparison)'),
             (r'O\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'O(Outcome)'),
             (r'0\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'O(Outcome)'),  # 处理数字0的情况
-            (r'T\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'T(Theory/Thesis)'),
+            (r'T\([^)]+\):\s*([^\n]+(?:\n(?![PICOT0]\([^)]+\):)[^\n]+)*)', 'T(Theory)'),
         ]
         
         # 按顺序提取各个部分
@@ -308,7 +308,7 @@ class EmailSender:
             content += f"   相关性分数: {paper.get('relevance_score', 0):.2f}\n"
             # 格式化原因，按PICO/T格式换行显示
             formatted_reason = self._format_reason(paper.get('relevance_reason', 'N/A'))
-            content += f"   原因:\n"
+            content += f"   核心内容:\n"
             # 为每行添加缩进
             for line in formatted_reason.split('\n'):
                 content += f"      {line}\n"
@@ -372,7 +372,7 @@ class EmailSender:
                     <strong>发布日期:</strong> {paper['published']}
                 </div>
                 <div class="meta" style="margin-top: 10px;">
-                    <strong>原因:</strong>
+                    <strong>核心内容:</strong>
                     <div style="margin-top: 5px; padding-left: 10px; white-space: pre-wrap;">
                         {formatted_reason}
                     </div>

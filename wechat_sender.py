@@ -102,7 +102,7 @@ class WeChatSender:
             score = paper.get('relevance_score', 0)
             content += f"### {i}. {paper['title']}\n\n"
             content += f"**作者:** {', '.join(paper['authors'][:3])}\n\n"
-            content += f"**相关性:** {score:.2f} - {paper.get('relevance_reason', 'N/A')}\n\n"
+            content += f"**相关性:** {score:.2f}\n\n"
             content += f"**链接:** [{paper['link']}]({paper['link']})\n\n"
             alphaxiv_link = _get_alphaxiv_link_wechat(paper)
             if alphaxiv_link:
@@ -110,7 +110,7 @@ class WeChatSender:
                 #https://www.alphaxiv.org/abs/2512.10947 => https://www.alphaxiv.org/zh/overview/2512.10947
                 zhalphaxiv_link = alphaxiv_link.replace("alphaxiv.org/abs", "alphaxiv.org/zh/overview")
                 content += f"**AlphaXiv中文链接:** [{zhalphaxiv_link}]({zhalphaxiv_link})\n\n"
-            content += f"**原因:** {paper.get('relevance_reason', 'N/A')}\n\n"
+            content += f"**核心内容:** {paper.get('relevance_reason', 'N/A')}\n\n"
             # content += f"**摘要:** {paper['summary'][:500]}...\n\n"
             content += "---\n\n"
         
