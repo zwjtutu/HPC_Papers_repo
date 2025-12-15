@@ -3,11 +3,11 @@
     "categories": [
       "cs.AI", 
       "cs.LG", 
-      "cs.Distributed",
       "cs.DC",
       "cs.CL",
       "cs.AR",
-      "cs.CV"
+      "cs.CV",
+      "cs.PF"
     ],
     "max_results": 100,
     "sort_by": "submittedDate",

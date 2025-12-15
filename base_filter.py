@@ -8,6 +8,20 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# 1. 明星机构/实验室 (LLM 通常能通过作者推断，或者 ArXiv 偶尔会有注释)
+TOP_LABS = [
+    "Google DeepMind", "OpenAI", "Meta FAIR", "NVIDIA", 
+    "Microsoft Research", "AWS AI", "Anthropic",
+    "Berkeley (BAIR)", "MIT CSAIL", "Stanford", "CMU", "Tsinghua"
+]
+
+# 2. 明星作者 (这是硬通货，LLM 识别非常准)
+# 建议放入你特别关注的大佬，如 Kaiming He (何恺明), Tri Dao (FlashAttention作者), etc.
+STAR_AUTHORS = [
+    "Kaiming He", "Yann LeCun", "Jeff Dean", "Ilya Sutskever", 
+    "Tri Dao", "Tim Dettmers", "Yoshua Bengio", "Andrew Ng",
+    "Demis Hassabis", "Fei-Fei Li"
+]
 
 class BaseFilter(ABC):
     """论文筛选器基类"""
@@ -30,6 +44,10 @@ class BaseFilter(ABC):
         self.coarse_filter_threshold = coarse_filter_threshold
         self.enable_coarse_filter = enable_coarse_filter
         self.title_filter_threshold = title_filter_threshold
+        ###self.offline_llm = ?    #未实现， 有显卡环境可用offline model进行一遍初筛
+        self.top_labs = TOP_LABS
+        self.star_authors = STAR_AUTHORS
+
     
     @abstractmethod
     def is_relevant(self, paper: Dict, title_only: bool = False) -> Tuple[bool, float, str]:
@@ -64,7 +82,6 @@ class BaseFilter(ABC):
             if keyword_lower and keyword_lower in text:
                 matched_keywords.append(keyword)
         
-        # print('matched_keywords: ', matched_keywords)
         if matched_keywords:
             # 计算匹配分数：匹配的关键词数量 / 总关键词数量
             score = min(len(matched_keywords) / max(len(self.keywords), 1), 1.0)
@@ -75,6 +92,39 @@ class BaseFilter(ABC):
         else:
             return (False, 0.0, "粗筛未匹配到相关关键词")
     
+    # def _offline_llm_filter(self, paper: Dict) -> Tuple[bool, float, str]:
+    #     """
+    #     离线大模型筛选(Step2筛选)：
+        
+    #     Args:
+    #         paper: 论文字典
+            
+    #     Returns:
+    #         (是否通过粗筛, 相关性分数, 原因说明)
+    #     """
+    #     try:
+    #         title_only = False
+    #         # 构建提示词（根据title_only决定是否包含摘要）
+    #         prompt = self._build_prompt(paper, title_only=title_only)
+            
+    #         # 调用离线LLAMA模型 API
+    #         response = self.offline_llm.create_chat_completion(        
+    #             messages=[
+    #                 {"role": "user", "content": prompt}
+    #             ],
+    #             temperature=0.3
+    #         )
+    #         result_text = response["choices"][0]["message"]["content"].strip()
+    #         # result_text = response.choices[0].message.content.strip()
+            
+    #         # 解析结果
+    #         return self._parse_response(result_text, paper, title_only)
+            
+    #     except Exception as e:
+    #         logger.error(f"离线大模型筛选论文时出错: {e}", exc_info=True)
+    #         # 出错时回退到关键词匹配
+    #         return self._simple_keyword_match(paper)
+
     def _simple_keyword_match(self, paper: Dict) -> Tuple[bool, float, str]:
         """
         简单的关键词匹配（备用方案，当LLM不可用时使用，大小写不敏感）
@@ -147,7 +197,7 @@ class BaseFilter(ABC):
 只返回JSON，不要其他文字。"""
         
         return prompt
-    
+
     def filter_papers(self, papers: List[Dict]) -> List[Dict]:
         """
         批量筛选论文：3阶段筛选（关键词粗筛 -> 标题LLM筛选 -> 标题+摘要LLM筛选）
@@ -189,24 +239,9 @@ class BaseFilter(ABC):
         
         # 阶段2: 标题LLM筛选
         logger.info(f"阶段2: 标题LLM筛选（阈值: {self.title_filter_threshold:.2f}）...")
-        stage2_papers = []
-        stage2_token_saved = 0
-        
-        for paper in stage1_papers:
-            is_relevant, score, reason = self.is_relevant(paper, title_only=True)
-            
-            # is_relevant已经根据title_filter_threshold判断过了，这里直接使用
-            if is_relevant:
-                paper["title_score"] = score
-                paper["title_reason"] = reason 
-                stage2_papers.append(paper)
-                logger.debug(f"论文 '{paper['title'][:50]}...' 阶段2通过 (分数: {score:.2f})")
-            else:
-                # 阶段2未通过的论文，记录信息但不进入阶段3
-                paper["relevance_score"] = score
-                paper["relevance_reason"] = f"{paper.get('coarse_reason', '')} -> 阶段2未通过: {reason}"
-                logger.debug(f"论文 '{paper['title'][:50]}...' 阶段2未通过 (分数: {score:.2f})")
-                stage2_token_saved += 1
+        title_only = True
+        batch_size = 150
+        stage2_papers = self.filter_all_papers(stage1_papers, title_only, batch_size)
         
         logger.info(f"阶段2完成: {len(stage2_papers)}/{len(stage1_papers)} 篇论文通过标题筛选")
         if len(stage2_papers) == 0:
@@ -215,40 +250,13 @@ class BaseFilter(ABC):
         
         # 阶段3: 标题+摘要LLM筛选
         logger.info(f"阶段3: 标题+摘要LLM筛选（阈值: {self.relevance_threshold:.2f}）...")
-        final_papers = []
-        
-        for paper in stage2_papers:
-            is_relevant, score, reason = self.is_relevant(paper, title_only=False)
-            
-            # is_relevant已经根据relevance_threshold判断过了，这里直接使用
-            # 保留所有阶段的信息
-            if "coarse_reason" in paper:
-                ###Modify by zwj, only step3 reason
-                #paper["relevance_reason"] = f"{paper.get('coarse_reason', '')} -> 阶段2: {paper.get('title_reason', '')} -> 阶段3: {reason}"
-                paper["relevance_reason"] = f"{reason}"
-            else:
-                paper["relevance_reason"] = f"阶段2: {paper.get('title_reason', '')} -> 阶段3: {reason}"
-            paper["relevance_score"] = score
-            
-            if is_relevant:
-                final_papers.append(paper)
-                logger.info(f"论文 '{paper['title'][:50]}...' 最终相关 (分数: {score:.2f})")
-            else:
-                logger.debug(f"论文 '{paper['title'][:50]}...' 阶段3未通过 (分数: {score:.2f})")
+        title_only = False
+        batch_size = 10
+        final_papers = self.filter_all_papers(stage2_papers, title_only, batch_size)
         
         logger.info(f"筛选完成: {len(final_papers)}/{total_papers} 篇论文最终相关")
-        
-        # 计算token节省
-        stage1_saved = total_papers - len(stage1_papers)
-        stage2_saved = len(stage1_papers) - len(stage2_papers)
-        total_saved = stage1_saved + stage2_saved
-        total_llm_calls = len(stage1_papers) + len(stage2_papers)  # 阶段2和阶段3的LLM调用
-        
-        logger.info(f"Token节省统计:")
-        logger.info(f"  - 阶段1过滤: {stage1_saved} 篇论文（关键词匹配，无需LLM）")
-        logger.info(f"  - 阶段2过滤: {stage2_saved} 篇论文（仅标题LLM，节省摘要token）")
-        logger.info(f"  - 总LLM调用: {total_llm_calls} 次（阶段2: {len(stage1_papers)}次，阶段3: {len(stage2_papers)}次）")
-        logger.info(f"  - 相比单阶段筛选，节省约 {((total_papers - total_llm_calls) / total_papers * 100):.1f}% 的完整LLM调用")
-        
+                
+        #按相关性从高到低进行排序
+        final_papers.sort(key=lambda x: x['relevance_score'], reverse=True)
         return final_papers
 

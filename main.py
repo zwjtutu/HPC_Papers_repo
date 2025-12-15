@@ -133,7 +133,8 @@ class HPCPaperAgent:
         try:
             # 1. 从arXiv获取论文
             self.logger.info(f"步骤1: 从arXiv获取最近 {days} 天的论文...")
-            papers = self.arxiv_fetcher.fetch_recent_papers(days=days)
+            # papers = self.arxiv_fetcher.fetch_recent_papers(days=days)
+            papers = self.arxiv_fetcher.fetch_recent_papers_rss(days=days)
             self.logger.info(f"获取到 {len(papers)} 篇论文")
             
             if not papers:
