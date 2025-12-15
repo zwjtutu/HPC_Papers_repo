@@ -142,7 +142,7 @@ class HPCPaperAgent:
                 return
             
             # 2. 过滤已存在的论文
-            if False:
+            if True:
                 self.logger.info("步骤2: 过滤已存在的论文...")
                 new_papers = self.storage.filter_new_papers(papers)
                 self.logger.info(f"过滤后剩余 {len(new_papers)} 篇新论文")
