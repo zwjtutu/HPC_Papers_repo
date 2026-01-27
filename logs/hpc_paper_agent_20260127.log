@@ -1,0 +1,211 @@
+2026-01-27 22:28:08,949 - __main__ - INFO - 已初始化 deepseek 筛选器
+2026-01-27 22:28:08,950 - __main__ - INFO - 存储上限已设置: 1000 篇论文
+2026-01-27 22:28:08,950 - __main__ - INFO - ================================================================================
+2026-01-27 22:28:08,950 - __main__ - INFO - 开始运行HPC论文自动获取工具
+2026-01-27 22:28:08,950 - __main__ - INFO - ================================================================================
+2026-01-27 22:28:08,950 - __main__ - INFO - 步骤1: 从arXiv获取最近 3 天的论文...
+2026-01-27 22:28:08,950 - arxiv_fetcher - INFO - [*] 正在从 RSS 拉取数据，筛选时间窗口: 2026-01-24 至今...
+2026-01-27 22:28:08,950 - arxiv_fetcher - INFO -     - Scanning cs.AI ...
+2026-01-27 22:28:09,340 - arxiv_fetcher - INFO -       -> Found 508 recent papers in cs.AI
+2026-01-27 22:28:12,340 - arxiv_fetcher - INFO -     - Scanning cs.LG ...
+2026-01-27 22:28:12,644 - arxiv_fetcher - INFO -       -> Found 512 recent papers in cs.LG
+2026-01-27 22:28:15,645 - arxiv_fetcher - INFO -     - Scanning cs.DC ...
+2026-01-27 22:28:15,773 - arxiv_fetcher - INFO -       -> Found 34 recent papers in cs.DC
+2026-01-27 22:28:18,773 - arxiv_fetcher - INFO -     - Scanning cs.CL ...
+2026-01-27 22:28:18,983 - arxiv_fetcher - INFO -       -> Found 317 recent papers in cs.CL
+2026-01-27 22:28:21,984 - arxiv_fetcher - INFO -     - Scanning cs.AR ...
+2026-01-27 22:28:22,111 - arxiv_fetcher - INFO -       -> Found 22 recent papers in cs.AR
+2026-01-27 22:28:25,111 - arxiv_fetcher - INFO -     - Scanning cs.CV ...
+2026-01-27 22:28:25,384 - arxiv_fetcher - INFO -       -> Found 307 recent papers in cs.CV
+2026-01-27 22:28:28,385 - arxiv_fetcher - INFO -     - Scanning cs.PF ...
+2026-01-27 22:28:28,489 - arxiv_fetcher - INFO -       -> Found 8 recent papers in cs.PF
+2026-01-27 22:28:31,490 - arxiv_fetcher - INFO - [*] RSS 阶段结束。共收集到 1169 个不重复的论文 ID。
+2026-01-27 22:28:31,491 - arxiv_fetcher - INFO - [*] 开始通过 API 批量查询详情，共 1169 篇...
+2026-01-27 22:28:31,894 - arxiv_fetcher - INFO -     - Batch 1 done. Fetched 50 items.
+2026-01-27 22:28:35,879 - arxiv_fetcher - INFO -     - Batch 2 done. Fetched 50 items.
+2026-01-27 22:28:39,233 - arxiv_fetcher - INFO -     - Batch 3 done. Fetched 50 items.
+2026-01-27 22:28:42,629 - arxiv_fetcher - INFO -     - Batch 4 done. Fetched 50 items.
+2026-01-27 22:28:46,009 - arxiv_fetcher - INFO -     - Batch 5 done. Fetched 50 items.
+2026-01-27 22:28:49,352 - arxiv_fetcher - INFO -     - Batch 6 done. Fetched 50 items.
+2026-01-27 22:28:52,724 - arxiv_fetcher - INFO -     - Batch 7 done. Fetched 50 items.
+2026-01-27 22:28:56,288 - arxiv_fetcher - INFO -     - Batch 8 done. Fetched 50 items.
+2026-01-27 22:28:59,743 - arxiv_fetcher - INFO -     - Batch 9 done. Fetched 50 items.
+2026-01-27 22:29:03,115 - arxiv_fetcher - INFO -     - Batch 10 done. Fetched 50 items.
+2026-01-27 22:29:06,530 - arxiv_fetcher - INFO -     - Batch 11 done. Fetched 50 items.
+2026-01-27 22:29:09,970 - arxiv_fetcher - INFO -     - Batch 12 done. Fetched 50 items.
+2026-01-27 22:29:13,381 - arxiv_fetcher - INFO -     - Batch 13 done. Fetched 50 items.
+2026-01-27 22:29:16,719 - arxiv_fetcher - INFO -     - Batch 14 done. Fetched 50 items.
+2026-01-27 22:29:20,175 - arxiv_fetcher - INFO -     - Batch 15 done. Fetched 50 items.
+2026-01-27 22:29:23,570 - arxiv_fetcher - INFO -     - Batch 16 done. Fetched 50 items.
+2026-01-27 22:29:26,925 - arxiv_fetcher - INFO -     - Batch 17 done. Fetched 50 items.
+2026-01-27 22:29:30,344 - arxiv_fetcher - INFO -     - Batch 18 done. Fetched 50 items.
+2026-01-27 22:29:33,827 - arxiv_fetcher - INFO -     - Batch 19 done. Fetched 50 items.
+2026-01-27 22:29:37,199 - arxiv_fetcher - INFO -     - Batch 20 done. Fetched 50 items.
+2026-01-27 22:29:41,299 - arxiv_fetcher - INFO -     - Batch 21 done. Fetched 50 items.
+2026-01-27 22:29:44,673 - arxiv_fetcher - INFO -     - Batch 22 done. Fetched 50 items.
+2026-01-27 22:29:48,007 - arxiv_fetcher - INFO -     - Batch 23 done. Fetched 50 items.
+2026-01-27 22:29:51,313 - arxiv_fetcher - INFO -     - Batch 24 done. Fetched 19 items.
+2026-01-27 22:29:54,315 - __main__ - INFO - 获取到 1169 篇论文
+2026-01-27 22:29:54,315 - __main__ - INFO - 步骤2: 过滤已存在的论文...
+2026-01-27 22:29:54,457 - storage - INFO - 过滤后: 1169/1169 篇新论文
+2026-01-27 22:29:54,457 - __main__ - INFO - 过滤后剩余 1169 篇新论文
+2026-01-27 22:29:54,457 - __main__ - INFO - 步骤3: 使用deepseek筛选相关论文...
+2026-01-27 22:29:54,457 - base_filter - INFO - 阶段1: 粗筛（关键词匹配，阈值: 0.01）...
+2026-01-27 22:29:54,543 - base_filter - INFO - 阶段1完成: 1017/1169 篇论文通过粗筛
+2026-01-27 22:29:54,543 - base_filter - INFO - 阶段2: 标题LLM筛选（阈值: 0.50）...
+2026-01-27 22:29:54,543 - deepseek_filter - INFO - [*] Processing batch 1/7 (150 papers)...
+2026-01-27 22:29:54,544 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-01-27 22:29:55,305 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:31:00,459 - deepseek_filter - INFO - [*] Processing batch 2/7 (150 papers)...
+2026-01-27 22:31:00,460 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-01-27 22:31:00,927 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:32:05,915 - deepseek_filter - INFO - [*] Processing batch 3/7 (150 papers)...
+2026-01-27 22:32:05,916 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-01-27 22:32:06,389 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:33:09,599 - deepseek_filter - INFO - [*] Processing batch 4/7 (150 papers)...
+2026-01-27 22:33:09,600 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-01-27 22:33:10,062 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:34:30,719 - deepseek_filter - INFO - [*] Processing batch 5/7 (150 papers)...
+2026-01-27 22:34:30,720 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-01-27 22:34:31,212 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:35:37,414 - deepseek_filter - INFO - [*] Processing batch 6/7 (150 papers)...
+2026-01-27 22:35:37,415 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-01-27 22:35:37,896 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:37:00,238 - deepseek_filter - INFO - [*] Processing batch 7/7 (117 papers)...
+2026-01-27 22:37:00,239 - deepseek_filter - INFO - [*] Sending 117 papers to DeepSeek for filtering...
+2026-01-27 22:37:00,707 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:37:52,310 - base_filter - INFO - 阶段2完成: 128/1017 篇论文通过标题筛选
+2026-01-27 22:37:52,310 - base_filter - INFO - 阶段3: 标题+摘要LLM筛选（阈值: 0.70）...
+2026-01-27 22:37:52,310 - deepseek_filter - INFO - [*] Processing batch 1/13 (10 papers)...
+2026-01-27 22:37:52,310 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:37:52,682 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:38:39,130 - deepseek_filter - INFO - [*] Processing batch 2/13 (10 papers)...
+2026-01-27 22:38:39,130 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:38:39,567 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:39:24,626 - deepseek_filter - INFO - [*] Processing batch 3/13 (10 papers)...
+2026-01-27 22:39:24,626 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:39:24,999 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:40:10,797 - deepseek_filter - INFO - [*] Processing batch 4/13 (10 papers)...
+2026-01-27 22:40:10,797 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:40:11,170 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:40:53,124 - deepseek_filter - INFO - [*] Processing batch 5/13 (10 papers)...
+2026-01-27 22:40:53,124 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:40:53,499 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:41:34,576 - deepseek_filter - INFO - [*] Processing batch 6/13 (10 papers)...
+2026-01-27 22:41:34,576 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:41:34,953 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:42:24,411 - deepseek_filter - INFO - [*] Processing batch 7/13 (10 papers)...
+2026-01-27 22:42:24,411 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:42:24,801 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:43:16,618 - deepseek_filter - INFO - [*] Processing batch 8/13 (10 papers)...
+2026-01-27 22:43:16,618 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:43:16,994 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:44:04,741 - deepseek_filter - INFO - [*] Processing batch 9/13 (10 papers)...
+2026-01-27 22:44:04,741 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:44:05,108 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:44:52,308 - deepseek_filter - INFO - [*] Processing batch 10/13 (10 papers)...
+2026-01-27 22:44:52,308 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:44:52,688 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:45:44,410 - deepseek_filter - INFO - [*] Processing batch 11/13 (10 papers)...
+2026-01-27 22:45:44,410 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:45:44,846 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:46:33,667 - deepseek_filter - INFO - [*] Processing batch 12/13 (10 papers)...
+2026-01-27 22:46:33,667 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-01-27 22:46:34,032 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:47:17,609 - deepseek_filter - INFO - [*] Processing batch 13/13 (8 papers)...
+2026-01-27 22:47:17,609 - deepseek_filter - INFO - [*] Sending 8 papers to DeepSeek for filtering...
+2026-01-27 22:47:17,900 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-01-27 22:47:55,709 - base_filter - INFO - 筛选完成: 71/1169 篇论文最终相关
+2026-01-27 22:47:55,709 - __main__ - INFO - 筛选出 71 篇相关论文
+2026-01-27 22:47:55,709 - __main__ - INFO - 步骤4: 保存论文到数据库...
+2026-01-27 22:47:55,712 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,715 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,718 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,721 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,724 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,726 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,729 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,732 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,734 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,737 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,740 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,742 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,745 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,748 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,750 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,753 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,756 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,759 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,761 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,764 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,766 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,769 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,772 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,775 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,777 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,780 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,783 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,785 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,788 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,791 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,794 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,797 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,799 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,802 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,805 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,808 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,810 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,813 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,816 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,818 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,821 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,824 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,826 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,829 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,832 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,834 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,837 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,840 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,843 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,845 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,848 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,851 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,853 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,856 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,859 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,861 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,864 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,866 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,869 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,872 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,875 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,877 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,880 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,883 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,885 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,888 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,891 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,893 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,896 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,899 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,902 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-01-27 22:47:55,903 - __main__ - INFO - 步骤5: 发送通知...
+2026-01-27 22:47:55,903 - __main__ - INFO - 发送邮件通知...
+2026-01-27 22:48:02,799 - email_sender - INFO - 成功发送 71 篇论文到邮箱
+2026-01-27 22:48:02,799 - __main__ - INFO - 邮件发送成功
+2026-01-27 22:48:02,799 - __main__ - INFO - 发送微信通知...
+2026-01-27 22:48:04,256 - wechat_sender - ERROR - 发送微信消息时出错: 400 Client Error: Bad Request for url: https://sctapi.ftqq.com/SCT305598TGOWz6DOxAKHVWNgonDUqVWkp.send
+Traceback (most recent call last):
+  File "/home/runner/work/HPC_Papers_repo/HPC_Papers_repo/wechat_sender.py", line 80, in send_papers
+    return self._send_via_serverchan(papers, title)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/runner/work/HPC_Papers_repo/HPC_Papers_repo/wechat_sender.py", line 124, in _send_via_serverchan
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://sctapi.ftqq.com/SCT305598TGOWz6DOxAKHVWNgonDUqVWkp.send
+2026-01-27 22:48:04,259 - __main__ - ERROR - 微信发送失败
+2026-01-27 22:48:04,259 - __main__ - INFO - ================================================================================
+2026-01-27 22:48:04,259 - __main__ - INFO - 完成！共处理 71 篇相关论文
+2026-01-27 22:48:04,259 - __main__ - INFO - ================================================================================
