@@ -1,0 +1,275 @@
+2026-06-03 23:48:55,780 - __main__ - INFO - 已初始化 deepseek 筛选器
+2026-06-03 23:48:55,781 - __main__ - INFO - 存储上限已设置: 1000 篇论文
+2026-06-03 23:48:55,781 - __main__ - INFO - ================================================================================
+2026-06-03 23:48:55,781 - __main__ - INFO - 开始运行HPC论文自动获取工具
+2026-06-03 23:48:55,781 - __main__ - INFO - ================================================================================
+2026-06-03 23:48:55,781 - __main__ - INFO - 步骤1: 从arXiv获取最近 3 天的论文...
+2026-06-03 23:48:55,781 - arxiv_fetcher - INFO - [*] 正在从 RSS 拉取数据，筛选时间窗口: 2026-05-31 至今...
+2026-06-03 23:48:55,781 - arxiv_fetcher - INFO -     - Scanning cs.AI ...
+2026-06-03 23:48:56,227 - arxiv_fetcher - INFO -       -> Found 440 recent papers in cs.AI
+2026-06-03 23:48:59,227 - arxiv_fetcher - INFO -     - Scanning cs.LG ...
+2026-06-03 23:48:59,534 - arxiv_fetcher - INFO -       -> Found 404 recent papers in cs.LG
+2026-06-03 23:49:02,534 - arxiv_fetcher - INFO -     - Scanning cs.DC ...
+2026-06-03 23:49:02,624 - arxiv_fetcher - INFO -       -> Found 34 recent papers in cs.DC
+2026-06-03 23:49:05,624 - arxiv_fetcher - INFO -     - Scanning cs.CL ...
+2026-06-03 23:49:05,824 - arxiv_fetcher - INFO -       -> Found 215 recent papers in cs.CL
+2026-06-03 23:49:08,825 - arxiv_fetcher - INFO -     - Scanning cs.AR ...
+2026-06-03 23:49:08,904 - arxiv_fetcher - INFO -       -> Found 14 recent papers in cs.AR
+2026-06-03 23:49:11,905 - arxiv_fetcher - INFO -     - Scanning cs.CV ...
+2026-06-03 23:49:12,103 - arxiv_fetcher - INFO -       -> Found 227 recent papers in cs.CV
+2026-06-03 23:49:15,103 - arxiv_fetcher - INFO -     - Scanning cs.PF ...
+2026-06-03 23:49:15,158 - arxiv_fetcher - INFO -       -> Found 9 recent papers in cs.PF
+2026-06-03 23:49:18,159 - arxiv_fetcher - INFO - [*] RSS 阶段结束。共收集到 963 个不重复的论文 ID。
+2026-06-03 23:49:18,160 - arxiv_fetcher - INFO - [*] 开始通过 API 批量查询详情，共 963 篇...
+2026-06-03 23:49:18,541 - arxiv_fetcher - INFO -     - Batch 1 done. Fetched 50 items.
+2026-06-03 23:49:22,019 - arxiv_fetcher - INFO -     - Batch 2 done. Fetched 50 items.
+2026-06-03 23:49:25,360 - arxiv_fetcher - INFO -     - Batch 3 done. Fetched 50 items.
+2026-06-03 23:49:28,651 - arxiv_fetcher - INFO -     - Batch 4 done. Fetched 50 items.
+2026-06-03 23:49:31,925 - arxiv_fetcher - INFO -     - Batch 5 done. Fetched 50 items.
+2026-06-03 23:49:35,280 - arxiv_fetcher - INFO -     - Batch 6 done. Fetched 50 items.
+2026-06-03 23:49:38,879 - arxiv_fetcher - INFO -     - Batch 7 done. Fetched 50 items.
+2026-06-03 23:49:42,179 - arxiv_fetcher - INFO -     - Batch 8 done. Fetched 50 items.
+2026-06-03 23:49:45,552 - arxiv_fetcher - INFO -     - Batch 9 done. Fetched 50 items.
+2026-06-03 23:49:48,858 - arxiv_fetcher - INFO -     - Batch 10 done. Fetched 50 items.
+2026-06-03 23:49:52,226 - arxiv_fetcher - INFO -     - Batch 11 done. Fetched 50 items.
+2026-06-03 23:49:55,594 - arxiv_fetcher - INFO -     - Batch 12 done. Fetched 50 items.
+2026-06-03 23:49:58,887 - arxiv_fetcher - INFO -     - Batch 13 done. Fetched 50 items.
+2026-06-03 23:50:02,503 - arxiv_fetcher - INFO -     - Batch 14 done. Fetched 50 items.
+2026-06-03 23:50:05,912 - arxiv_fetcher - INFO -     - Batch 15 done. Fetched 50 items.
+2026-06-03 23:50:09,290 - arxiv_fetcher - INFO -     - Batch 16 done. Fetched 50 items.
+2026-06-03 23:50:12,627 - arxiv_fetcher - INFO -     - Batch 17 done. Fetched 50 items.
+2026-06-03 23:50:15,967 - arxiv_fetcher - INFO -     - Batch 18 done. Fetched 50 items.
+2026-06-03 23:50:19,685 - arxiv_fetcher - INFO -     - Batch 19 done. Fetched 50 items.
+2026-06-03 23:50:22,881 - arxiv_fetcher - INFO -     - Batch 20 done. Fetched 13 items.
+2026-06-03 23:50:25,883 - __main__ - INFO - 获取到 963 篇论文
+2026-06-03 23:50:25,883 - __main__ - INFO - 步骤2: 过滤已存在的论文...
+2026-06-03 23:50:25,998 - storage - INFO - 过滤后: 962/963 篇新论文
+2026-06-03 23:50:25,998 - __main__ - INFO - 过滤后剩余 962 篇新论文
+2026-06-03 23:50:25,998 - __main__ - INFO - 步骤3: 使用deepseek筛选相关论文...
+2026-06-03 23:50:25,999 - base_filter - INFO - 阶段1: 粗筛（关键词匹配，阈值: 0.01）...
+2026-06-03 23:50:26,071 - base_filter - INFO - 阶段1完成: 808/962 篇论文通过粗筛
+2026-06-03 23:50:26,071 - base_filter - INFO - 阶段2: 标题LLM筛选（阈值: 0.50）...
+2026-06-03 23:50:26,071 - deepseek_filter - INFO - [*] Processing batch 1/6 (150 papers)...
+2026-06-03 23:50:26,072 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-06-03 23:50:27,177 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:50:41,122 - deepseek_filter - INFO - [*] Processing batch 2/6 (150 papers)...
+2026-06-03 23:50:41,122 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-06-03 23:50:41,633 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:50:55,879 - deepseek_filter - INFO - [*] Processing batch 3/6 (150 papers)...
+2026-06-03 23:50:55,879 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-06-03 23:50:56,410 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:51:09,815 - deepseek_filter - INFO - [*] Processing batch 4/6 (150 papers)...
+2026-06-03 23:51:09,816 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-06-03 23:51:10,352 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:51:23,164 - deepseek_filter - INFO - [*] Processing batch 5/6 (150 papers)...
+2026-06-03 23:51:23,164 - deepseek_filter - INFO - [*] Sending 150 papers to DeepSeek for filtering...
+2026-06-03 23:51:23,676 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:51:36,925 - deepseek_filter - INFO - [*] Processing batch 6/6 (58 papers)...
+2026-06-03 23:51:36,925 - deepseek_filter - INFO - [*] Sending 58 papers to DeepSeek for filtering...
+2026-06-03 23:51:37,338 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:51:42,829 - base_filter - INFO - 阶段2完成: 60/808 篇论文通过标题筛选
+2026-06-03 23:51:42,829 - base_filter - INFO - 阶段3: 标题+摘要LLM筛选（阈值: 0.70）...
+2026-06-03 23:51:42,829 - deepseek_filter - INFO - [*] Processing batch 1/6 (10 papers)...
+2026-06-03 23:51:42,829 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-06-03 23:51:43,259 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:51:54,657 - deepseek_filter - INFO - [*] Processing batch 2/6 (10 papers)...
+2026-06-03 23:51:54,658 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-06-03 23:51:55,127 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:52:08,112 - deepseek_filter - INFO - [*] Processing batch 3/6 (10 papers)...
+2026-06-03 23:52:08,112 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-06-03 23:52:08,531 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:52:18,910 - deepseek_filter - INFO - [*] Processing batch 4/6 (10 papers)...
+2026-06-03 23:52:18,910 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-06-03 23:52:19,424 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:52:33,920 - deepseek_filter - INFO - [*] Processing batch 5/6 (10 papers)...
+2026-06-03 23:52:33,920 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-06-03 23:52:34,350 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:52:49,779 - deepseek_filter - INFO - [*] Processing batch 6/6 (10 papers)...
+2026-06-03 23:52:49,779 - deepseek_filter - INFO - [*] Sending 10 papers to DeepSeek for filtering...
+2026-06-03 23:52:50,184 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-06-03 23:53:02,360 - base_filter - INFO - 筛选完成: 36/962 篇论文最终相关
+2026-06-03 23:53:02,360 - __main__ - INFO - 筛选出 36 篇相关论文
+2026-06-03 23:53:02,360 - __main__ - INFO - 步骤4: 保存论文到数据库...
+2026-06-03 23:53:02,363 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,367 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,371 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,375 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,379 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,382 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,386 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,390 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,394 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,398 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,402 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,406 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,410 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,414 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,418 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,422 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,426 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,430 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,434 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,438 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,441 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,445 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,449 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,453 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,456 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,460 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,464 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,467 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,472 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,475 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,479 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,482 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,486 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,490 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,494 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,497 - storage - INFO - LRU清理: 删除了 1 篇最久未访问的论文
+2026-06-03 23:53:02,499 - __main__ - INFO - 步骤5: 发送通知...
+2026-06-03 23:53:02,499 - __main__ - INFO - 发送邮件通知...
+2026-06-03 23:53:09,772 - email_sender - INFO - 成功发送 36 篇论文到邮箱
+2026-06-03 23:53:09,773 - __main__ - INFO - 邮件发送成功
+2026-06-03 23:53:09,773 - __main__ - INFO - 发送微信通知...
+2026-06-03 23:53:10,387 - wechat_sender - ERROR - 发送微信消息时出错: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/util/ssl_.py", line 433, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/util/ssl_.py", line 477, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/util/retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/util/ssl_.py", line 433, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/urllib3/util/ssl_.py", line 477, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/HPC_Papers_repo/HPC_Papers_repo/wechat_sender.py", line 80, in send_papers
+    return self._send_via_serverchan(papers, title)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/runner/work/HPC_Papers_repo/HPC_Papers_repo/wechat_sender.py", line 123, in _send_via_serverchan
+    response = requests.post(url, json=data, timeout=100)
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/requests/api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/requests/adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+2026-06-03 23:53:10,394 - __main__ - ERROR - 微信发送失败
+2026-06-03 23:53:10,394 - __main__ - INFO - ================================================================================
+2026-06-03 23:53:10,395 - __main__ - INFO - 完成！共处理 36 篇相关论文
+2026-06-03 23:53:10,395 - __main__ - INFO - ================================================================================
